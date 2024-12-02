@@ -16,7 +16,7 @@ pub const ZOPFLI_WINDOW_SIZE: usize = 32768;
 /// Dividing into huge blocks hurts compression, but not much relative to the size.
 /// This must be equal or greater than `ZOPFLI_WINDOW_SIZE`.
 #[cfg(feature = "std")]
-pub const ZOPFLI_MASTER_BLOCK_SIZE: usize = 1_000_000;
+pub const ZOPFLI_MASTER_BLOCK_SIZE: usize = 0xFFFFFFFF;
 
 /// The window mask used to wrap indices into the window. This is why the
 /// window size must be a power of two.
@@ -32,7 +32,7 @@ pub const ZOPFLI_MIN_MATCH: usize = 3;
 /// This is so because longest match finding has to find the exact distance
 /// that belongs to each length for the best lz77 strategy.
 /// Good values: e.g. 5, 8.
-pub const ZOPFLI_CACHE_LENGTH: usize = 8;
+pub const ZOPFLI_CACHE_LENGTH: usize = 256;
 
 /// limit the max hash chain hits for this hash value. This has an effect only
 /// on files where the hash value is the same very often. On these files, this
@@ -40,7 +40,7 @@ pub const ZOPFLI_CACHE_LENGTH: usize = 8;
 /// `ZOPFLI_WINDOW_SIZE`, while zlib uses 4096 even for best level), but makes it
 /// faster on some specific files.
 /// Good value: e.g. 8192.
-pub const ZOPFLI_MAX_CHAIN_HITS: usize = 8192;
+pub const ZOPFLI_MAX_CHAIN_HITS: usize = 32768;
 
 #[inline]
 pub fn boxed_array<T: Clone, const N: usize>(element: T) -> Box<[T; N]> {
