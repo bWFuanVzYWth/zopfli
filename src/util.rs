@@ -32,7 +32,7 @@ pub const ZOPFLI_MIN_MATCH: usize = 3;
 /// This is so because longest match finding has to find the exact distance
 /// that belongs to each length for the best lz77 strategy.
 /// Good values: e.g. 5, 8.
-pub const ZOPFLI_CACHE_LENGTH: usize = 256;
+pub const ZOPFLI_CACHE_LENGTH: usize = 81;
 
 /// limit the max hash chain hits for this hash value. This has an effect only
 /// on files where the hash value is the same very often. On these files, this
